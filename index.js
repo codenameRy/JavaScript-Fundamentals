@@ -1,3 +1,4 @@
+//Section Functions
 //Challenge Rewrite the function using '?' or '||'
 function checkAge(age) {
   if (age > 18) {
@@ -60,3 +61,65 @@ function pow2(a,b) {
 }
 
 console.log(pow2(3.3,3))
+
+//Section Function Expressions
+
+// Challenge Callback Function
+function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+function showOk() {
+  alert( "You agreed." );
+}
+
+function showCancel() {
+  alert( "You canceled the execution." );
+}
+
+// usage: functions showOk, showCancel are passed as arguments to ask
+ask("Do you agree?", showOk, showCancel);
+
+//Rewrite with shorter syntax
+
+function ask2(question, yes, no) {
+  return confirm(question) ? yes() : no() 
+}
+
+ask2(
+  `Do you agree?`,
+  () => {alert( "You agreed." )},
+  () => {alert( "You canceled the execution." )}
+)
+
+//Challenge
+
+let age = prompt("What is your age?", 18);
+
+let welcome;
+
+if (age < 18) {
+
+  welcome = function() {
+    alert("Hello!");
+  };
+
+} else {
+
+  welcome = function() {
+    alert("Greetings!");
+  };
+
+}
+
+welcome(); // ok now
+
+//Rewrite
+
+let age2 = prompt("What is your age?", 18);
+let welcome2 = (age2 < 18) ?
+  function () { alert("Hello!")} :
+  function () {alert("Greetings!")}
+
+  welcome2();
