@@ -79,7 +79,7 @@ function showCancel() {
 }
 
 // usage: functions showOk, showCancel are passed as arguments to ask
-ask("Do you agree?", showOk, showCancel);
+// ask("Do you agree?", showOk, showCancel);
 
 //Rewrite with shorter syntax
 
@@ -87,11 +87,11 @@ function ask2(question, yes, no) {
   return confirm(question) ? yes() : no() 
 }
 
-ask2(
-  `Do you agree?`,
-  () => {alert( "You agreed." )},
-  () => {alert( "You canceled the execution." )}
-)
+// ask2(
+//   `Do you agree?`,
+//   () => {alert( "You agreed." )},
+//   () => {alert( "You canceled the execution." )}
+// )
 
 //Challenge
 
@@ -113,13 +113,51 @@ if (age < 18) {
 
 }
 
-welcome(); // ok now
+// welcome(); // ok now
 
 //Rewrite
 
 let age2 = prompt("What is your age?", 18);
 let welcome2 = (age2 < 18) ?
-  function () { alert("Hello!")} :
+  function () {alert("Hello!")} :
   function () {alert("Greetings!")}
 
-  welcome2();
+  // welcome2();
+
+//Comments
+
+//Challenge - Refactor the following code for Prime numbers
+
+function showPrimes(n) {
+  nextPrime:
+  for (let i = 2; i < n; i++) {
+
+    // check if i is a prime number
+    for (let j = 2; j < i; j++) {
+      if (i % j == 0) continue nextPrime;
+    }
+
+    console.log(i);
+  }
+}
+
+showPrimes(10)
+
+function showPrimes2(n) {
+
+  for (let i = 2; i < n; i++) {
+    if (!isPrime(i)) continue;
+
+    alert(i);
+  }
+}
+
+function isPrime(n) {
+  for (let i = 2; i < n; i++) {
+    if (n % i == 0) return false;
+  }
+
+  return true;
+}
+
+showPrimes2(12)
